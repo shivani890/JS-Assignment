@@ -1,12 +1,33 @@
 
 function newActivity() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("toDoList").appendChild(li);
-  }
+ var inputValue = document.getElementById("myInput").value;
+
+ if (inputValue) {
+  var todoItem = document.createElement("li");
+
+  var todoText = document.createTextNode(inputValue);
+  
+  todoItem.appendChild(todoText);
+  
+  document.getElementById("toDoList").appendChild(todoItem);
+  
+  var button = document.createElement('button');
+  
+  button.innerText = 'X';
+  
+  todoItem.appendChild(button);
+
+  // delete todo item 
+
+  button.addEventListener('click', function() {
+     toDoList.removeChild(todoItem);
+  });
+
+
+
+} else {
+ alert("please enter a todo item")
+}
+return false;
 } 
+
